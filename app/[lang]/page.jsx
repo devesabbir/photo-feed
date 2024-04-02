@@ -1,22 +1,15 @@
-import Image from "next/image";
+import PhotoGallery from "@/components/PhotoGallery";
 
-const PhotoGallery = () => {
-  return (
-    <div class="img-grid">
-      <a href="./single.html" class="group">
-        <Image
-          width={700}
-          height={700}
-          src="https://source.unsplash.com/ztpUS4N1xhY"
-          alt=""
-        />
-
-        <div class="title-container">
-          <h4 class="title">The Beautiful Nature</h4>
-        </div>
-      </a>
-    </div>
-  );
+const fetchPhotos = async () => {
+  const res = await fetch(`${process.env.API_URL}/photos`);
+  const photos = await res.json();
+  return photos.data;
 };
 
-export default PhotoGallery;
+const PhotoGalleryPage = async () => {
+  const photos = await fetchPhotos();
+
+  return <PhotoGallery photos={photos} />;
+};
+
+export default PhotoGalleryPage;
