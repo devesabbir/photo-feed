@@ -6,10 +6,10 @@ const fetchPhotos = async () => {
   return photos.data;
 };
 
-const PhotoGalleryPage = async () => {
+const PhotoGalleryPage = async ({ params: { lang } }) => {
   const photos = await fetchPhotos();
 
-  return <PhotoGallery photos={photos} />;
+  return <PhotoGallery photos={photos} lang={lang} />;
 };
 
 export default PhotoGalleryPage;
