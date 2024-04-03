@@ -1,4 +1,5 @@
-import { getDictionary } from "../../dictionaries/dictionaries";
+import { getDictionary } from "@/app/[lang]/dictionaries/dictionaries";
+import Modal from "@/components/Modal";
 import PhotoDetails from "@/components/PhotoDetails";
 
 const fetchSinglePhoto = async (id) => {
@@ -11,7 +12,11 @@ const SingleImage = async ({ params: { lang, id } }) => {
   const dic = await getDictionary(lang);
   const photo = await fetchSinglePhoto(id);
 
-  return <PhotoDetails photo={photo} />;
+  return (
+    <Modal>
+      <PhotoDetails photo={photo} />
+    </Modal>
+  );
 };
 
 export default SingleImage;

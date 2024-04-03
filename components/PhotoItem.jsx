@@ -1,17 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const PhotoItem = ({ item, lang }) => {
+const PhotoItem = ({ item }) => {
   return (
-    <>
-      <Link href={`/${lang}/photos/${item.id}`} class="group">
-        <Image width={700} height={700} src={item.url} alt="" />
+    <Link href={`/photos/${item.id}`} className="group">
+      <Image width={700} height={700} src={item.url} alt="image" />
 
-        <div class="title-container">
-          <h4 class="title">{item.title}</h4>
-        </div>
-      </Link>
-    </>
+      <div className="title-container">
+        <h4 className="title">{item.title}</h4>
+      </div>
+    </Link>
   );
 };
 
